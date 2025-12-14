@@ -1,331 +1,221 @@
-## Microservices-Task 
-# 🐬 Microservices Containerization with Node.js, Docker & Docker Compose
-=======
+Microservices Kubernetes Deployment -- Skill Test 2
+==================================================
 
----
-
-## Overview
-
-This document provides details on testing various services after running the `docker-compose` file. These services include User, Product, Order, and Gateway Services. Each service has its own endpoints for testing purposes.
-
----
-
-The system consists of four independent services that communicate over an internal Docker network:
-
-| Service | Description | Port |
-
-|----------|--------------|------|
-
-| **User Service** | Manages user data | 3000 |
-
-| **Product Service** | Handles product information | 3001 |
-
-| **Order Service** | Processes user orders | 3002 |
-
-| **Gateway Service** | API gateway that routes external requests to internal services | 3003 |
-
-All services are containerized individually and orchestrated through Docker Compose.
-
----
-
-## 🧩 Tech Stack
-
-- **Node.js** -- Backend runtime
-- **Express.js** -- REST API framework
-- **Axios** -- HTTP client for inter-service communication
-- **Docker** -- Containerization platform
-- **Docker Compose** -- Multi-container orchestration
-
----
-
-## Services and Endpoints
-
-### **User Service**
-
-- **Base URL:** `http://localhost:3000`
-- **Endpoints:**
-  - **List Users:**
-
-    ```
-    curl http://localhost:3000/users
-    ```
-
-    Or open in your browser: [http://localhost:3000/users](http://localhost:3000/users)
-
----
-
-### **Product Service**
-
-- **Base URL:** `http://localhost:3001`
-- **Endpoints:**
-  - **List Products:**
-
-    ```
-    curl http://localhost:3001/products
-    ```
-
-    Or open in your browser: [http://localhost:3001/products](http://localhost:3001/products)
-
----
-
-### **Order Service**
-
-- **Base URL:** `http://localhost:3002`
-- **Endpoints:**
-  - **List Orders:**
-
-    ```
-    curl http://localhost:3002/orders
-    ```
-
-    Or open in your browser: [http://localhost:3002/orders](http://localhost:3002/orders)
-
----
-
-### **Gateway Service**
-
-- **Base URL:** `http://localhost:3003/api`
-- **Endpoints:**
-  - **Users:**
-    ```
-    curl http://localhost:3003/api/users
-    ```
-  - **Products:**
-    ```
-    curl http://localhost:3003/api/products
-    ```
-  - **Orders:**
-    ```
-    curl http://localhost:3003/api/orders
-    ```
-
----
-
-## Instructions
-
-1. Start all services using the `docker-compose` file:
-   ```
-   docker-compose up
-   ```
-2. Once the services are running, use the above endpoints to verify the functionality.
-
-Happy testing!
-
-
----
-
-## 🏗️ Project Structure
------------------------
-
-<pre class="overflow-visible!" data-start="1910" data-end="2115"><div class="contain-inline-size rounded-2xl relative bg-token-sidebar-surface-primary"><div class="sticky top-9"><div class="absolute end-0 bottom-0 flex h-9 items-center pe-2"><div class="bg-token-bg-elevated-secondary text-token-text-secondary flex items-center gap-4 rounded-sm px-2 font-sans text-xs"></div></div></div><div class="overflow-y-auto p-4" dir="ltr"><code class="whitespace-pre!"><span><span>
-submission/
-
-├── user-service/
-
-│ ├── app.js
-
-│ ├── package.json
-
-│ └── Dockerfile
-
-├── product-service/
-
-│ ├── app.js
-
-│ ├── package.json
-
-│ └── Dockerfile
-
-├── order-service/
-
-│ ├── app.js
-
-│ ├── package.json
-
-│ └── Dockerfile
-
-├── gateway-service/
-
-│ ├── app.js
-
-│ ├── package.json
-
-│ └── Dockerfile
-
-├── docker-compose.yml
-
-└── README.md</span></span></code></div></div></pre>
+**Container Orchestration (MCAD)**
 
 * * * * *
 
+Objective
+---------
 
-## 🧭 Project Architecture
+Deploy a Node.js microservices application on Kubernetes, ensuring proper configuration, service discovery, and inter-service communication.
 
-Below diagram illustrates the communication flow and orchestration between all microservices using Docker Compose.
+This deployment was performed on an **on-prem Kubernetes cluster using Docker Desktop**, not on EKS or any cloud provider.
 
-<img width="1360" height="418" alt="Screenshot from 2025-11-08 15-51-04" src="https://github.com/user-attachments/assets/c06cb12c-aa98-4175-b8b1-5d96dec5c84b" />
+* * * * *
 
----
+Application Architecture
+------------------------
 
-## ⚙️ Prerequisites
+The application consists of four containerized Node.js microservices:
 
-Before starting, ensure the following are installed:
+| Service Name | Port |
+| --- | --- |
+| User Service | 3000 |
+| Product Service | 3001 |
+| Order Service | 3002 |
+| Gateway Service | 3003 |
 
-- **Docker Engine** ≥ 20.x  
-- **Docker Compose** ≥ 1.27 (or integrated Docker Compose v2)  
-- **Git** for cloning the repository
+<img width="1429" height="887" alt="diagram-export-14-12-2025-23_17_33" src="https://github.com/user-attachments/assets/84aadd55-6f93-4920-a967-0a787656614d" />
 
----
 
-### **Verify installation:**
+* * * * *
 
-`docker --version`
+Platform & Tools
+----------------
 
-`docker-compose --version`
+-   Kubernetes (Docker Desktop -- On-Prem)
 
----
+-   kubectl
 
-🧱 Setup & Installation
+-   Docker
 
-### **Clone the repository**
+-   NGINX Ingress Controller
 
-`git clone https://github.com/`<your-username>`/Microservices-Task_Skill_test.git`
+* * * * *
 
-`cd Microservices-Task_Skill_test/submission`
+Folder Structure
+----------------
 
-<img width="1312" height="165" alt="Screenshot from 2025-11-08 14-30-05" src="https://github.com/user-attachments/assets/eaf8c6bd-2e9a-4ddb-81b6-9a11209b6417" />
+`submission/
+├── deployments/
+│   ├── user-service.yaml
+│   ├── product-service.yaml
+│   ├── order-service.yaml
+│   └── gateway-service.yaml
+├── services/
+│   ├── user-service.yaml
+│   ├── product-service.yaml
+│   ├── order-service.yaml
+│   └── gateway-service.yaml
+├── ingress/
+│   └── ingress.yaml
+├── screenshots/
+│   ├── pods.png
+│   ├── service-test.png
+│   └── logs.png
+├── user-service/
+├── product-service/
+├── order-service/
+└── gateway-service/`
 
----
-<img width="1312" height="566" alt="Screenshot from 2025-11-08 14-36-48" src="https://github.com/user-attachments/assets/29bda94b-a284-42f3-8b49-c1d03afb34ad" />
+* * * * *
 
----
+Kubernetes Deployment Details
+-----------------------------
 
-### **Build and start all services**
+### Deployments
 
-`docker-compose up --build -d`
+Each Deployment includes:
 
-<img width="1312" height="655" alt="Screenshot from 2025-11-08 14-49-18" src="https://github.com/user-attachments/assets/03c83b43-ba3c-48c0-b447-ab1199e9dddd" />
+-   Correct container image reference
 
----
+-   Resource requests and limits
 
-### **Verify running containers**
+-   Environment variables
 
-`docker-compose ps`
+-   Liveness and readiness probes
 
-<img width="1358" height="740" alt="Screenshot from 2025-11-08 15-19-47" src="https://github.com/user-attachments/assets/72523176-1c87-41ab-920f-387f75c1081e" />
+-   Proper labels and selectors
 
+### Services
 
----
+-   All services use **ClusterIP**
 
-### **Check logs**
+-   Enables internal Kubernetes DNS-based service discovery
 
-`docker-compose logs -f`
+-   Correct port mapping for each microservice
 
-<img width="1307" height="161" alt="Screenshot from 2025-11-08 15-26-49" src="https://github.com/user-attachments/assets/026e93b4-d4e3-4c5f-8527-4c7cf4c81005" />
+* * * * *
 
+Deployment Steps
+----------------
 
-🔍 ### **Testing the Services**
+`kubectl apply -f submission/deployments/
+kubectl apply -f submission/services/
+kubectl apply -f submission/ingress/ingress.yaml`
 
-✅ Health Check Endpoints
+* * * * *
 
-Service  Endpoint  Response
+Verification & Testing
+----------------------
 
-<img width="1364" height="195" alt="Screenshot from 2025-11-08 15-16-54" src="https://github.com/user-attachments/assets/93e44c72-0b4b-441c-9f6e-1296b8670c46" />
+### 1\. Verify Pods, Services, and Ingress
 
----
+`kubectl get pods -o wide
+kubectl get svc
+kubectl get ingress`
 
-🌐 API Testing via Gateway
+* * * * *
 
-Fetch Users
+### 2\. Inter-Service Communication Test (ClusterIP)
 
-`curl http://localhost:3003/api/users`
+A temporary curl pod was used to validate Kubernetes DNS and service connectivity:
 
-<img width="1360" height="202" alt="Screenshot from 2025-11-08 16-01-57" src="https://github.com/user-attachments/assets/0b96df43-ca9e-45b1-a07f-91010094409f" />
+`kubectl run curlpod --image=curlimages/curl -it --restart=Never -- sh`
 
----
+Inside the pod:
 
-Fetch Products
+`nslookup user-service
+curl -v http://user-service:3000`
 
-`curl http://localhost:3003/api/products`
+This confirms:
 
-<img width="1360" height="202" alt="Screenshot from 2025-11-08 15-59-55" src="https://github.com/user-attachments/assets/51baf432-7b39-414a-81a7-a960d1fa61e0" />
+-   Kubernetes DNS resolution
 
----
+-   ClusterIP service discovery
 
-Create an Order
+-   TCP connectivity between services
 
-`curl -X POST http://localhost:3003/api/orders
-  -H "Content-Type: application/json"
-  -d '{"userId":1,"productId":2}'`
+> **Note:** HTTP `404 Not Found` responses are expected because the services do not expose a root (`/`) endpoint.\
+> A `404` confirms that the service is reachable and the application is running.
 
-  <img width="1317" height="126" alt="Screenshot from 2025-11-08 16-07-38" src="https://github.com/user-attachments/assets/1bb36c95-a398-496d-85ec-1ae18a95a441" />
-  
----
+* * * * *
 
-Get All Orders
+### 3\. Gateway Logs (Service Communication)
 
-`curl http://localhost:3003/api/orders`
+`kubectl logs -l app=gateway-service --tail=100`
 
-<img width="1360" height="202" alt="Screenshot from 2025-11-08 16-05-58" src="https://github.com/user-attachments/assets/c1e18dea-f679-4950-8e12-e3207b29da2f" />
+Gateway logs confirm communication with downstream services.
 
----
+* * * * *
 
-<img width="1366" height="176" alt="Screenshot from 2025-11-08 16-08-55" src="https://github.com/user-attachments/assets/500cd45e-66ee-4610-8879-4677c8785225" />
+Ingress Configuration (Bonus Task)
+----------------------------------
 
+NGINX Ingress Controller was enabled and configured with the following routes:
 
+| Path | Backend Service |
+| --- | --- |
+| `/api/users` | User Service |
+| `/api/products` | Product Service |
+| `/api/orders` | Order Service |
+| `/` | Gateway Service |
 
-If all endpoints respond successfully, the system is fully operational.
+Ingress Host:
 
----
+`micro.local`
 
-🧰 ### **Common Commands**
+Ingress was tested using port-forwarding:
 
-Action  Command
+`kubectl -n ingress-nginx port-forward svc/ingress-nginx-controller 8080:80`
 
-Build & Run containers  `docker-compose up --build -d`
+* * * * *
 
-Stop containers  `docker-compose down`
+Screenshots
+-----------
 
-View logs  `docker-compose logs -f`
+The following screenshots are included as evidence:
 
-Rebuild specific service  `docker-compose build user-service`
+-   **pods.png** -- Running pods (`kubectl get pods -o wide`)
 
-Access a container shell  `docker exec -it user-service sh`
+-   **service-test.png** -- DNS resolution and service connectivity test
 
-Remove all containers & images  `docker-compose down --rmi all --volumes`
+-   **logs.png** -- Gateway service logs showing communication
 
----
+* * * * *
 
-🧠 ### **Troubleshooting**
+Troubleshooting
+---------------
 
-Issue  Possible Cause  Fix
+### ImagePullBackOff
 
-Port 3000 already in use  Grafana or another service using port  Stop Grafana (sudo systemctl stop grafana-server) or change Grafana's port
+-   Ensure Docker images are built locally when using Docker Desktop Kubernetes:
 
-<img width="735" height="541" alt="image" src="https://github.com/user-attachments/assets/2d85f9e1-b080-4506-9484-fb7d369b4fde" />
+`docker build -t user-service:latest ./submission/user-service`
 
----
+### Curl Timeouts
 
+-   Some services do not expose `/` or `/health` endpoints.
 
-🏁 Conclusion
--------------
+-   DNS resolution and TCP connectivity were used instead to validate service communication.
 
-This project successfully demonstrates the core principles of **containerization, microservice communication, and orchestration using Docker and Docker Compose**.\
-Each service --- User, Product, Order, and Gateway --- was independently containerized, networked, and executed as part of a cohesive multi-service environment.
+* * * * *
 
-Through this implementation, I gained practical hands-on experience in:
+Conclusion
+----------
 
--   Structuring and isolating microservices for scalability and maintainability
+All microservices were successfully deployed on Kubernetes with:
 
--   Building and optimizing Docker images efficiently
+-   Proper service discovery
 
--   Managing multi-container environments with Docker Compose
+-   Internal communication using ClusterIP
 
--   Resolving networking and port conflicts within containerized systems
+-   Resource management and health probes
 
--   Testing inter-service API communication using internal Docker DNS
+-   Optional ingress routing
 
-This project reflects a complete DevOps workflow --- from **development to deployment**, **testing**, and **documentation**.
+This fulfills all requirements of **Skill Test 2 -- Container Orchestration**.
 
 
 📸 Screenshots (Attach in Submission)
