@@ -1,4 +1,4 @@
-Microservices Kubernetes Deployment -- Skill Test 2
+ Microservices Kubernetes Deployment -- Skill Test 2
 ==================================================
 
 **Container Orchestration (MCAD)**
@@ -26,7 +26,7 @@ The application consists of four containerized Node.js microservices:
 | Order Service | 3002 |
 | Gateway Service | 3003 |
 
-<img width="1429" height="887" alt="diagram-export-14-12-2025-23_17_33" src="https://github.com/user-attachments/assets/84aadd55-6f93-4920-a967-0a787656614d" />
+<img width="1429" height="807" alt="diagram-export-14-12-2025-23_17_33" src="https://github.com/user-attachments/assets/7515a9f6-28d3-4bb5-b8de-724c0514da6c" />
 
 
 * * * * *
