@@ -1,0 +1,41 @@
+-------------------------------------------------------------------------------
+NGINX Ingress controller
+  Release:       v1.14.0
+  Build:         52c0a83ac9bc72e9ce1b9fe4f2d6dcc8854516a8
+  Repository:    https://github.com/kubernetes/ingress-nginx
+  nginx version: nginx/1.27.1
+
+-------------------------------------------------------------------------------
+
+W1130 15:39:09.884480      11 client_config.go:667] Neither --kubeconfig nor --master was specified.  Using the inClusterConfig.  This might not work.
+I1130 15:39:09.885063      11 main.go:205] "Creating API client" host="https://10.96.0.1:443"
+I1130 15:39:09.919609      11 main.go:248] "Running in Kubernetes cluster" major="1" minor="34" git="v1.34.0" state="clean" commit="f28b4c9efbca5c5c0af716d9f2d5702667ee8a45" platform="linux/amd64"
+I1130 15:39:11.694400      11 main.go:101] "SSL fake certificate created" file="/etc/ingress-controller/ssl/default-fake-certificate.pem"
+I1130 15:39:12.807546      11 ssl.go:535] "loading tls certificate" path="/usr/local/certificates/cert" key="/usr/local/certificates/key"
+I1130 15:39:13.495245      11 nginx.go:273] "Starting NGINX Ingress controller"
+I1130 15:39:13.549223      11 event.go:377] Event(v1.ObjectReference{Kind:"ConfigMap", Namespace:"ingress-nginx", Name:"ingress-nginx-controller", UID:"d68a5e26-faab-40b0-9885-c1e899f24038", APIVersion:"v1", ResourceVersion:"119915", FieldPath:""}): type: 'Normal' reason: 'CREATE' ConfigMap ingress-nginx/ingress-nginx-controller
+I1130 15:39:14.608235      11 store.go:439] "Ignoring ingress because of error while validating ingress class" ingress="default/microservices-nginx-ingress" error="ingress does not contain a valid IngressClass"
+I1130 15:39:14.699470      11 nginx.go:319] "Starting NGINX process"
+I1130 15:39:14.700789      11 leaderelection.go:257] attempting to acquire leader lease ingress-nginx/ingress-nginx-leader...
+I1130 15:39:14.701114      11 nginx.go:339] "Starting validation webhook" address=":8443" certPath="/usr/local/certificates/cert" keyPath="/usr/local/certificates/key"
+I1130 15:39:14.703104      11 controller.go:214] "Configuration changes detected, backend reload required"
+I1130 15:39:15.270850      11 leaderelection.go:271] successfully acquired lease ingress-nginx/ingress-nginx-leader
+I1130 15:39:15.271178      11 status.go:85] "New leader elected" identity="ingress-nginx-controller-cc68b44bd-65l6w"
+I1130 15:39:17.851257      11 controller.go:228] "Backend successfully reloaded"
+I1130 15:39:17.851383      11 controller.go:240] "Initial sync, sleeping for 1 second"
+I1130 15:39:17.851908      11 event.go:377] Event(v1.ObjectReference{Kind:"Pod", Namespace:"ingress-nginx", Name:"ingress-nginx-controller-cc68b44bd-65l6w", UID:"3c3f4e0d-ab8d-4296-a9af-f9d6e6c306ac", APIVersion:"v1", ResourceVersion:"205082", FieldPath:""}): type: 'Normal' reason: 'RELOAD' NGINX reload triggered due to a change in configuration
+W1130 15:39:18.854409      11 controller.go:260] Dynamic reconfiguration failed (retrying; 15 retries left): Post "http://127.0.0.1:10246/configuration/backends": dial tcp 127.0.0.1:10246: connect: connection refused
+E1130 16:57:59.321255      11 main.go:96] "invalid ingress configuration" err=<
+	ingress contains invalid paths: path /api/users(/|$)(.*) cannot be used with pathType Prefix
+	path /api/products(/|$)(.*) cannot be used with pathType Prefix
+	path /api/orders(/|$)(.*) cannot be used with pathType Prefix
+	path /(/|$)(.*) cannot be used with pathType Prefix
+ > ingress="default/microservices-ingress"
+I1130 17:00:23.430882      11 main.go:107] "successfully validated configuration, accepting" ingress="default/microservices-ingress"
+I1130 17:00:23.571874      11 store.go:443] "Found valid IngressClass" ingress="default/microservices-ingress" ingressclass="nginx"
+I1130 17:00:23.609406      11 event.go:377] Event(v1.ObjectReference{Kind:"Ingress", Namespace:"default", Name:"microservices-ingress", UID:"3814a755-ceda-43f2-9dff-fb895603e4df", APIVersion:"networking.k8s.io/v1", ResourceVersion:"215673", FieldPath:""}): type: 'Normal' reason: 'Sync' Scheduled for sync
+I1130 17:00:23.659800      11 controller.go:214] "Configuration changes detected, backend reload required"
+I1130 17:00:24.099831      11 controller.go:228] "Backend successfully reloaded"
+I1130 17:00:24.103783      11 event.go:377] Event(v1.ObjectReference{Kind:"Pod", Namespace:"ingress-nginx", Name:"ingress-nginx-controller-cc68b44bd-65l6w", UID:"3c3f4e0d-ab8d-4296-a9af-f9d6e6c306ac", APIVersion:"v1", ResourceVersion:"205082", FieldPath:""}): type: 'Normal' reason: 'RELOAD' NGINX reload triggered due to a change in configuration
+I1130 17:01:15.286572      11 status.go:311] "updating Ingress status" namespace="default" ingress="microservices-ingress" currentValue=null newValue=[{"ip":"172.19.0.7"}]
+I1130 17:01:15.389587      11 event.go:377] Event(v1.ObjectReference{Kind:"Ingress", Namespace:"default", Name:"microservices-ingress", UID:"3814a755-ceda-43f2-9dff-fb895603e4df", APIVersion:"networking.k8s.io/v1", ResourceVersion:"215791", FieldPath:""}): type: 'Normal' reason: 'Sync' Scheduled for sync

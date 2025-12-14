@@ -1,0 +1,13 @@
+NAME                                                READY   STATUS    RESTARTS      AGE     IP           NODE              NOMINATED NODE   READINESS GATES
+gateway-service-5685858d7b-4jm9h                    1/1     Running   0             7m13s   10.244.2.8   desktop-worker    <none>           <none>
+gateway-service-5685858d7b-7xpdf                    1/1     Running   0             7m13s   10.244.1.7   desktop-worker3   <none>           <none>
+order-service-796564c576-2lmr8                      1/1     Running   0             7m13s   10.244.3.8   desktop-worker2   <none>           <none>
+order-service-796564c576-c79g4                      1/1     Running   0             7m13s   10.244.2.7   desktop-worker    <none>           <none>
+product-nginx-ingress-controller-7f94645bb8-7qxv9   1/1     Running   2 (91m ago)   4d12h   10.244.1.2   desktop-worker3   <none>           <none>
+product-nginx-ingress-controller-7f94645bb8-kc4sf   1/1     Running   2 (91m ago)   4d12h   10.244.2.3   desktop-worker    <none>           <none>
+product-service-8f87cfbd6-pslkg                     1/1     Running   0             7m13s   10.244.3.7   desktop-worker2   <none>           <none>
+product-service-8f87cfbd6-vtqqn                     1/1     Running   0             7m13s   10.244.1.8   desktop-worker3   <none>           <none>
+user-nginx-ingress-controller-768fbff4d4-c582h      1/1     Running   2 (91m ago)   4d12h   10.244.2.6   desktop-worker    <none>           <none>
+user-nginx-ingress-controller-768fbff4d4-htngm      1/1     Running   2             4d12h   10.244.3.5   desktop-worker2   <none>           <none>
+user-service-7d795f4d6f-8znqc                       1/1     Running   0             7m12s   10.244.1.9   desktop-worker3   <none>           <none>
+user-service-7d795f4d6f-fdth4                       1/1     Running   0             7m12s   10.244.3.9   desktop-worker2   <none>           <none>

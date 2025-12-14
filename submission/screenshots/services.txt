@@ -1,0 +1,8 @@
+NAME                            TYPE        CLUSTER-IP      EXTERNAL-IP   PORT(S)    AGE     SELECTOR
+gateway-service                 ClusterIP   10.96.232.183   <none>        3003/TCP   7m12s   app=gateway-service
+kubernetes                      ClusterIP   10.96.0.1       <none>        443/TCP    6d4h    <none>
+order-service                   ClusterIP   10.96.254.190   <none>        3002/TCP   7m10s   app=order-service
+product-nginx-ingress-service   ClusterIP   10.96.28.169    <none>        80/TCP     4d12h   app=product-nginx-ingress-controller
+product-service                 ClusterIP   10.96.225.9     <none>        3001/TCP   7m7s    app=product-service
+user-nginx-ingress-service      ClusterIP   10.96.32.40     <none>        80/TCP     4d12h   app=user-nginx-ingress-controller
+user-service                    ClusterIP   10.96.34.158    <none>        3000/TCP   7m5s    app=user-service
