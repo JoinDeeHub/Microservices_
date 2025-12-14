@@ -1,4 +1,4 @@
- Microservices Kubernetes Deployment -- Skill Test 2
+☸️ Microservices Kubernetes Deployment -- Skill Test 2
 ==================================================
 
 **Container Orchestration (MCAD)**
@@ -47,7 +47,7 @@ Platform & Tools
 Folder Structure
 ----------------
 
-`submission/
+<pre class="overflow-visible!" data-start="1910" data-end="2115"><div class="contain-inline-size rounded-2xl relative bg-token-sidebar-surface-primary"><div class="sticky top-9"><div class="absolute end-0 bottom-0 flex h-9 items-center pe-2"><div class="bg-token-bg-elevated-secondary text-token-text-secondary flex items-center gap-4 rounded-sm px-2 font-sans text-xs"></div></div></div><div class="overflow-y-auto p-4" dir="ltr"><code class="whitespace-pre!"><span><span>submission/
 ├── deployments/
 │   ├── user-service.yaml
 │   ├── product-service.yaml
@@ -67,7 +67,7 @@ Folder Structure
 ├── user-service/
 ├── product-service/
 ├── order-service/
-└── gateway-service/`
+└── gateway-service/</span></span></code></div></div></pre>
 
 * * * * *
 
@@ -183,6 +183,17 @@ The following screenshots are included as evidence:
 
 -   **logs.png** -- Gateway service logs showing communication
 
+<img width="1314" height="350" alt="Screenshot from 2025-12-14 22-49-09" src="https://github.com/user-attachments/assets/3cc19ba8-31ab-42ed-bf3f-7353904570e0" />
+
+<img width="1314" height="350" alt="Screenshot from 2025-12-14 22-49-48" src="https://github.com/user-attachments/assets/3d99f622-c305-46e5-ad6b-04c813e5ec2e" />
+
+<img width="1314" height="274" alt="Screenshot from 2025-12-14 22-50-16" src="https://github.com/user-attachments/assets/9c26a5de-f78c-47ca-a553-edaa68f1d783" />
+
+<img width="1314" height="556" alt="Screenshot from 2025-12-14 22-56-14" src="https://github.com/user-attachments/assets/79a30d66-4eef-4bfa-84f7-37d0b3a6effb" />
+
+<img width="1314" height="618" alt="Screenshot from 2025-12-14 22-58-41" src="https://github.com/user-attachments/assets/1a39eb3d-da78-4624-bac0-6f16e571617a" />
+
+
 * * * * *
 
 Troubleshooting
@@ -229,8 +240,8 @@ This fulfills all requirements of **Skill Test 2 -- Container Orchestration**.
 *DevOps Technical Lead | MCAD Program*\
 
 [DevOps B13]
-Skill Test 1 -- Cloud & Containers
-Microservices Containerization Assignment
+Skill Test 2 -- Cloud & Container Orchestration
+Microservices Kubernetes Deployment Assessment
 
 📧 deepika2.ytb@gmail.com\
 💼 [GitHub: JoinDeeHub](https://github.com/JoinDeeHub)\
